@@ -22,6 +22,40 @@
     gtag('config', 'G-PYVRSFMDRL');
   </script>
 
+  <!-- enable latex -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        ignoreHtmlClass: 'tex2jax_ignore',
+        processHtmlClass: 'tex2jax_process'
+      }
+    };
+  </script>
+
+  <script>
+    function updatePredictedIBS() {
+      var scene_id = document.getElementById("scene-id").value;
+      var view_id = document.getElementById("view-id").value;
+
+      console.log("single", scene_id, view_id)
+
+      var video = document.getElementById("multi-task-result-video");
+      video.src = "media/results/sim_rollouts/" + "n" + demo + "-" + task + "-" + inst + ".mp4"
+      video.playbackRate = 1.75;
+      video.play();
+    }
+
+
+  </script>
+
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
 
@@ -146,21 +180,65 @@ achieve single-view dexterous hand grasping in cluttered scenes.
 <section class="section">
   <div class="container is-max-desktop">
 
-    <!-- Concurrent Work. -->
+    <!-- Main pipeline -->
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">CADGrasp</h2>
-        <image class="teaser-image" src="./static/assets/pipeline.png" mode="aspectFit|aspectFill|widthFix"/>
-        <h3> Overview of CADGrasp, a two-stage framework for dexterous grasping in cluttered scenes.
-(I) Conditional IBS Generation: A diffusion model is trained to model the conditional probability
-distribution p(I|P, T). (II) Grasp Pose Optimization: We optimize the grasp poses G with predicted
-sparse IBS I as constraints.</h3>
+          <image class="teaser-image" src="./static/assets/pipeline.png" mode="aspectFit|aspectFill|widthFix"/>
+          <h3> Overview of CADGrasp, a two-stage framework for dexterous grasping in cluttered scenes.
+              (I) Conditional IBS Generation: A diffusion model is trained to model the conditional probability
+              distribution \( p(\mathcal{I}|\mathcal{P}, \mathbf{T}) \). (II) Grasp Pose Optimization: We optimize the grasp poses \( \mathcal{G} \)  with predicted
+              sparse IBS \( \hat{I} \) as constraints.
+          </h3>
       </div>
     </div>
-    <!--/ Concurrent Work. -->
+    <!--/ Main pipeline -->
+
+    <br/>
+    
+    
+    <!-- predicted IBS viusalization -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Predicted IBS viusalization</h2>
+          viusalize predicted IBS for scene 
+          <div class="select is-small">
+            <select id="scene-id" onchange="updatePredictedIBS()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            </select>
+          </div>
+          in view 
+          <div class="select is-small">
+            <select id="view-id" onchange="updatePredictedIBS()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            </select>
+          </div>
+          
+          <image class="teaser-image" src="./static/assets/pipeline.png" mode="aspectFit|aspectFill|widthFix"/>
+          <h3> Overview of CADGrasp, a two-stage framework for dexterous grasping in cluttered scenes.
+              (I) Conditional IBS Generation: A diffusion model is trained to model the conditional probability
+              distribution \( p(\mathcal{I}|\mathcal{P}, \mathbf{T}) \). (II) Grasp Pose Optimization: We optimize the grasp poses \( \mathcal{G} \)  with predicted
+              sparse IBS \( \hat{I} \) as constraints.
+          </h3>
+      </div>
+    </div>
+    <!--/ predicted IBS viusalization -->
+
 
   </div>
 </section>
+
+
 
 
 <!-- <section class="section" id="BibTeX">
@@ -178,7 +256,7 @@ sparse IBS I as constraints.</h3>
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+      <a class="icon-link" href="https://github.com/CADGrasp" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
     </div>
