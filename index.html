@@ -43,14 +43,11 @@
   <script>
     function updatePredictedIBS() {
       var scene_id = document.getElementById("scene-id").value;
-      var view_id = document.getElementById("view-id").value;
-
-      console.log("single", scene_id, view_id)
-
-      var video = document.getElementById("multi-task-result-video");
-      video.src = "media/results/sim_rollouts/" + "n" + demo + "-" + task + "-" + inst + ".mp4"
-      video.playbackRate = 1.75;
-      video.play();
+      console.log("single", scene_id)
+      var html_1 = document.getElementById("predicted-ibs");
+      var html_2 = document.getElementById("optimization");
+      html_1.src = "./static/assets/pose_and_traj/pose_" + scene_id + ".html";
+      html_2.src = "./static/assets/pose_and_traj/traj_" + scene_id + ".html";
     }
 
 
@@ -201,35 +198,35 @@ achieve single-view dexterous hand grasping in cluttered scenes.
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Predicted IBS viusalization</h2>
-          viusalize predicted IBS for scene 
-          <div class="select is-small">
-            <select id="scene-id" onchange="updatePredictedIBS()">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            </select>
-          </div>
-          in view 
-          <div class="select is-small">
-            <select id="view-id" onchange="updatePredictedIBS()">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            </select>
-          </div>
-          
-          <image class="teaser-image" src="./static/assets/pipeline.png" mode="aspectFit|aspectFill|widthFix"/>
-          <h3> Overview of CADGrasp, a two-stage framework for dexterous grasping in cluttered scenes.
-              (I) Conditional IBS Generation: A diffusion model is trained to model the conditional probability
-              distribution \( p(\mathcal{I}|\mathcal{P}, \mathbf{T}) \). (II) Grasp Pose Optimization: We optimize the grasp poses \( \mathcal{G} \)  with predicted
-              sparse IBS \( \hat{I} \) as constraints.
+          <h3>viusalize predicted IBS for scene
+            <div class="select is-small">
+              <select id="scene-id" onchange="updatePredictedIBS()">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              </select>
+            </div>
           </h3>
+          <iframe id="predicted-ibs" src="./static/assets/pose_and_traj/pose_0.html" width="100%" height="800" frameborder="0"></iframe>
+          <p style="text-align:center;">
+            Predicted IBS
+          </p>
+          <iframe id="optimization" src="./static/assets/pose_and_traj/traj_0.html" width="100%" height="800" frameborder="0"></iframe>
+          <p style="text-align:center;">
+            optimization progress
+          </p>
       </div>
     </div>
     <!--/ predicted IBS viusalization -->
@@ -237,20 +234,6 @@ achieve single-view dexterous hand grasping in cluttered scenes.
 
   </div>
 </section>
-
-
-
-
-<!-- <section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{cadgrasp2025,
-  author    = {Jiyao Zhang, Zhiyuan Ma, Tianhao Wu, Zeyuan Chen, Hao Dong},
-  title     = {CADGrasp: Learning Contact and Collision Aware General Dexterous Grasping in Cluttered Scenes},
-  year      = {2025},
-}</code></pre>
-  </div>
-</section> -->
 
 
 <footer class="footer">
@@ -264,22 +247,14 @@ achieve single-view dexterous hand grasping in cluttered scenes.
       <div class="column is-8">
         <div class="content">
           <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
+            Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a> and <a href="https://peract.github.io/">PerAct</a>. 
           </p>
         </div>
       </div>
     </div>
   </div>
 </footer>
+
 
 </body>
 </html>
