@@ -78,7 +78,9 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">CADGrasp: Learning Contact and Collision Aware General Dexterous Grasping in Cluttered Scenes</h1>
+          <h1 class="title is-1 publication-title tex2jax_ignore">
+            <span class="richpurple">CA</span><span class="mauve">D</span><span class="softcoral">Grasp</span>: Learning <span class="richpurple">C</span>ontact and <span class="richpurple">C</span>ollision <span class="richpurple">A</span>ware General <span class="mauve">D</span>exterous <span class="softcoral">Grasp</span>ing in Cluttered Scenes
+          </h1>
         </div>
       </div>
     </div>
@@ -146,13 +148,21 @@ achieve single-view dexterous hand grasping in cluttered scenes.
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Dexterous grasping in cluttered environments presents substantial challenges due to the high degrees of freedom of dexterous hands, occlusion, and potential collisions arising from diverse object geometries and complex layouts. 
-          </p>
-          <p>
-            To address these challenges, we propose CADGrasp, a two-stage algorithm for general dexterous grasping using single-view point cloud inputs. In the first stage, we predict a scene-decoupled, contact- and collision-aware representation—sparse IBS—as the optimization target. Sparse IBS compactly encodes the geometric and contact relationships between the dexterous hand and the scene, enabling stable and collision-free dexterous grasp pose optimization. To enhance the prediction of this high-dimensional representation, we introduce an occupancy-diffusion model with voxel-level conditional guidance and force closure score filtering. In the second stage, we develop several energy functions and ranking strategies for optimization based on sparse IBS to generate high-quality dexterous grasp poses. 
-          </p>
-          <p>
-            Extensive experiments in both simulated and real-world settings validate the effectiveness of our approach, demonstrating its capability to mitigate collisions while maintaining a high grasp success rate across diverse objects and complex scenes.
+            Dexterous grasping in cluttered environments presents substantial challenges due to the high 
+            degrees of freedom of dexterous hands, occlusion, and potential collisions arising from diverse 
+            object geometries and complex layouts. 
+            To address these challenges, we propose CADGrasp, a two-stage algorithm for general dexterous 
+            grasping using single-view point cloud inputs. In the first stage, we predict a scene-decoupled, 
+            contact- and collision-aware representation—sparse IBS—as the optimization target. Sparse IBS 
+            compactly encodes the geometric and contact relationships between the dexterous hand and the 
+            scene, enabling stable and collision-free dexterous grasp pose optimization. To enhance the 
+            prediction of this high-dimensional representation, we introduce an occupancy-diffusion model 
+            with voxel-level conditional guidance and force closure score filtering. In the second stage, 
+            we develop several energy functions and ranking strategies for optimization based on sparse IBS 
+            to generate high-quality dexterous grasp poses. 
+            Extensive experiments in both simulated and real-world settings validate the effectiveness 
+            of our approach, demonstrating its capability to mitigate collisions while maintaining a high 
+            grasp success rate across diverse objects and complex scenes.
           </p>
         </div>
       </div>
@@ -193,41 +203,42 @@ achieve single-view dexterous hand grasping in cluttered scenes.
 
     <br/>
     
-    
-    <!-- predicted IBS viusalization -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Predicted IBS viusalization</h2>
-          <h3>viusalize predicted IBS for scene
-            <div class="select is-small">
-              <select id="scene-id" onchange="updatePredictedIBS()">
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              </select>
-            </div>
-          </h3>
-          <iframe id="predicted-ibs" src="./static/assets/pose_and_traj/pose_0.html" width="100%" height="800" frameborder="0"></iframe>
-          <p style="text-align:center;">
-            Predicted IBS
-          </p>
-          <iframe id="optimization" src="./static/assets/pose_and_traj/traj_0.html" width="100%" height="800" frameborder="0"></iframe>
-          <p style="text-align:center;">
-            optimization progress
-          </p>
+    <h2 class="title is-3">Predicted IBS viusalization</h2>
+    <h3>viusalize predicted IBS for scene
+      <div class="select is-small">
+        <select id="scene-id" onchange="updatePredictedIBS()">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        </select>
       </div>
+    </h3>
+    <!-- predicted IBS viusalization -->
+    <div class="columns is-centered two-html">
+      <div class="column is-full-width">
+        <iframe id="predicted-ibs" src="./static/assets/pose_and_traj/pose_0.html" width="100%" height="800" frameborder="0"></iframe>
+        <p style="text-align:center;">
+          Predicted IBS
+        </p>
+      </div>
+      <div class="column is-full-width">
+        <iframe id="optimization" src="./static/assets/pose_and_traj/traj_0.html" width="100%" height="800" frameborder="0"></iframe>
+        <p style="text-align:center;">
+          optimization progress
+        </p>
+        </div>
     </div>
     <!--/ predicted IBS viusalization -->
 

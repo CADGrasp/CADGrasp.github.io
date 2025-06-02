@@ -157,3 +157,22 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+
+.two-html {
+  width: 200%;
+  margin: 0 -50%; /* 负 margin 使元素向左偏移 50%，实现居中 */
+}
+
+.richpurple {
+  color: #7B3FB4; /* CA 的颜色 */
+  font-weight: bold;
+}
+.mauve {
+  color: #BA5E86; /* D 的颜色 */
+  font-weight: bold;
+}
+.softcoral {
+  color: #FA8072; /* Grasp 的颜色 */
+  font-weight: bold;
+}
